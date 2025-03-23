@@ -8,7 +8,6 @@ int main() {
     if (!glfwInit()) return -1;
 
     // Create a hidden GLFW window by setting GLFW_VISIBLE to GLFW_FALSE
-    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
     glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
     glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
     glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE); // Prevents flickering focus issues
@@ -17,6 +16,7 @@ int main() {
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1); // Enable VSync
+    glfwHideWindow(window);
     
     // Initialize ImGui
     IMGUI_CHECKVERSION();
