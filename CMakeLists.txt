@@ -13,7 +13,11 @@ file(GLOB SOURCES
     "includes/*/*.cpp"
 )
 
-add_executable(learning WIN32 ${SOURCES})
+if(WIN32)
+    add_executable(learning WIN32 ${SOURCES})
+else()
+    add_executable(learning ${SOURCES})
+endif()
 
 # Link necessary libraries
 target_link_libraries(learning
