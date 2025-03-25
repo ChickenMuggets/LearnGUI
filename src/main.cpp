@@ -2,6 +2,8 @@
 #include "GLFW/glfw3.h"
 #include "../includes/imgui/imgui_impl_glfw.h"
 #include "../includes/imgui/imgui_impl_opengl3.h"
+#include "node.h"
+#include <iostream>
 
 int main() {
     // Initialize GLFW
@@ -16,7 +18,7 @@ int main() {
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1); // Enable VSync
-    glfwHideWindow(window);
+    glfwShowWindow(window);
     
     // Initialize ImGui
     IMGUI_CHECKVERSION();
@@ -36,30 +38,8 @@ int main() {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-
-        // Create UI
-        ImGui::Begin("Node Window", &nodeOpen, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar);
-        ImGui::BeginGroup(); 
-        ImGui::Text("Node Title");
-    
-        // Move the close button to the top-right
-        ImGui::SameLine(ImGui::GetWindowWidth() - 30);
-        if (ImGui::Button("X")) {
-            // Cleanup
-            ImGui_ImplOpenGL3_Shutdown();
-            ImGui_ImplGlfw_Shutdown();
-            ImGui::DestroyContext();
-            glfwDestroyWindow(window);
-            glfwTerminate();
-        }
-        ImGui::EndGroup();
-        
-        ImGui::Separator(); // Visual separation between title and content
-
-        ImGui::Text("Hello, GLFW + ImGui!");
-        
-        ImGui::End();
-
+        std::cout << "opening node";
+        node::window(nodeOpen, window);
         // Render main viewport
         ImGui::Render();
         int display_w, display_h;
