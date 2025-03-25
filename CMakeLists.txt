@@ -5,12 +5,12 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Include directories if needed
-include_directories(includes)
+include_directories(vendors)
 
 # Gather source files
 file(GLOB SOURCES
     "src/*.cpp"
-    "includes/*/*.cpp"
+    "vendors/*/*.cpp"
 )
 
 if(WIN32)
